@@ -18,6 +18,12 @@
       "version": ""
     },
     {
+      "type": "panel",
+      "id": "gauge",
+      "name": "Gauge",
+      "version": ""
+    },
+    {
       "type": "grafana",
       "id": "grafana",
       "name": "Grafana",
@@ -341,11 +347,9 @@
       },
       "id": 4,
       "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "auto",
+        "minVizHeight": 75,
+        "minVizWidth": 75,
         "orientation": "auto",
-        "percentChangeColorMode": "standard",
         "reduceOptions": {
           "calcs": [
             "lastNotNull"
@@ -353,9 +357,9 @@
           "fields": "",
           "values": false
         },
-        "showPercentChange": false,
-        "textMode": "auto",
-        "wideLayout": true
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true,
+        "sizing": "auto"
       },
       "pluginVersion": "12.3.1",
       "targets": [
@@ -373,7 +377,7 @@
       ],
       "title": "Pod Uptime",
       "transparent": true,
-      "type": "stat"
+      "type": "gauge"
     }
   ],
   "preload": false,
@@ -390,7 +394,7 @@
   "timezone": "browser",
   "title": "My-app-grafana-dashboard",
   "uid": "adjmn22",
-  "version": 14,
+  "version": 15,
   "weekStart": "",
   "id": null
 }
