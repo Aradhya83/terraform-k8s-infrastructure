@@ -1,10 +1,10 @@
 # Monitoring with Prometheus and Grafana
 
-Prometheus and Grafana are installed on the minikube cluster with Helm. Prometheus collects cluster and pod metrics, and Grafana visualizes them. The dashboards here monitor the application pods deployed by the Terraform code in this repository (namespace `terraform-demo`).
+Prometheus and Grafana are installed on the minikube cluster with Helm. Prometheus collects cluster and pod metrics, and Grafana visualizes them. The dashboard here monitor the application pods deployed by the Terraform code in this repository (namespace `terraform-demo`).
 
-![my-app pod metrics dashboard](images/my-app-dashboard.png)
+![my-app pod metrics dashboard](image/my-app-dashboard.png)
 
-## Dashboards
+## Dashboard
 
 ### my-app Pod Metrics
 A dashboard for the application pods in the `terraform-demo` namespace, with four panels:
@@ -18,16 +18,9 @@ A dashboard for the application pods in the `terraform-demo` namespace, with fou
 
 The CPU spike in the screenshot was generated on purpose by running a busy loop inside the pods, to demonstrate the panel. It is not real application traffic.
 
-Dashboard file: [`dashboards/my-app-pod-metrics.json`](dashboards/my-app-pod-metrics.json)
+Dashboard file: [`dashboard/my-app-pod-metrics.json`](dashboard/my-app-pod-metrics.json)
 
-### Prometheus 2.0 Overview
-Grafana's prebuilt dashboard, imported to monitor the health of the Prometheus server itself (uptime, number of series, scrape and reload failures).
-
-![Prometheus 2.0 Overview](images/prometheus-overview.png)
-
-Dashboard file: [`dashboards/prometheus-2-0-overview.json`](dashboards/prometheus-2-0-overview.json)
-
-To import either dashboard into another Grafana, go to **Dashboards → New → Import**, upload the JSON file and select your Prometheus data source.
+To import the dashboard into another Grafana, go to **Dashboards → New → Import**, upload the JSON file and select your Prometheus data source.
 
 ## Install
 
@@ -93,6 +86,3 @@ kube_pod_container_status_restarts_total{namespace="terraform-demo", pod=~"my-ap
 time() - kube_pod_start_time{namespace="terraform-demo", pod=~"my-app.*"}
 ```
 
-## Notes
-- Grafana's persistence is disabled in this setup, so dashboards are lost if the Grafana pod is restarted. Re-import the JSON files to restore them.
-- No credentials are stored in this repository.
